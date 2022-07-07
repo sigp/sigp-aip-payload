@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Modified from BgD Aave Payload @ https://github.com/bgd-labs/aave-ecosystem-reserve-v2/blob/master/src/PayloadAaveBGD.sol
+// Adapted from BgD Aave Payload @ https://github.com/bgd-labs/aave-ecosystem-reserve-v2/blob/master/src/PayloadAaveBGD.sol
 
 pragma solidity 0.8.11;
 

@@ -153,7 +153,6 @@ contract AaveEcosystemReserveV2 is
 
         uint256 delta = deltaOf(streamId);
         vars.recipientBalance = delta * stream.ratePerSecond;
-
         /*
          * If the stream `balance` does not equal `deposit`, it means there have been withdrawals.
          * We have to subtract the total amount withdrawn from the amount of money that has been
