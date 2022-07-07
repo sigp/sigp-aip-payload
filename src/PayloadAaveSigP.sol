@@ -3,12 +3,8 @@
 
 pragma solidity 0.8.11;
 
-import {AaveEcosystemReserveController} from "./AaveEcosystemReserveController.sol";
-import {AaveEcosystemReserveV2} from "./AaveEcosystemReserveV2.sol";
 import {IInitializableAdminUpgradeabilityProxy} from "src/interfaces/IInitializableAdminUpgradeabilityProxy.sol";
 import {IAaveEcosystemReserveController} from "src/interfaces/IAaveEcosystemReserveController.sol";
-import {IStreamable} from "src/interfaces/IStreamable.sol";
-import {IAdminControlledEcosystemReserve} from "src/interfaces/IAdminControlledEcosystemReserve.sol";
 import {IERC20} from "src/interfaces/IERC20.sol";
 
 contract PayloadAaveSigP {
