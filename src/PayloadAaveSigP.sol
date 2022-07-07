@@ -38,10 +38,10 @@ contract PayloadAaveSigP {
 
 
     uint256 public constant FEE = 1296000 * 1e6; // $1,296,000. Minimum engagement fee as per proposal
-    uint256 public constant UPFRONT_AMOUNT = 648000 * 1e6;// FEE / 2; // 50% of the fee
+    uint256 public constant UPFRONT_AMOUNT = FEE / 2;// $648.000 ; // 50% of the fee
 
-    uint256 public constant AUSDC_UPFRONT_AMOUNT = 324000 * 1e6; // UPFRONT_AMOUNT / 2; // 324,000 aUSDC
-    uint256 public constant AUSDT_UPFRONT_AMOUNT = 324000 * 1e6; // UPFRONT_AMOUNT / 2; // 324,000 aUSDT
+    uint256 public constant AUSDC_UPFRONT_AMOUNT = UPFRONT_AMOUNT / 2; // 324,000 aUSDC
+    uint256 public constant AUSDT_UPFRONT_AMOUNT = UPFRONT_AMOUNT /2 ; // 324,000 aUSDT
 
     uint256 public constant AUSDC_STREAM_AMOUNT = 324010368000; // ~324,000 aUSDC. A bit more for the streaming requirements
     uint256 public constant AUSDT_STREAM_AMOUNT = 324010368000; // ~324,000 aUSDT. A bit more for the streaming requirements
