@@ -27,23 +27,24 @@ contract PayloadAaveSigP {
         IERC20(0x3Ed3B47Dd13EC9a98b44e6204A523E766B225811);
 
     // As per the offchain governance proposal
-    // 50% upfront payment, 50% streamed with:
-    // Start stream time = block.timestamp + 6 months
-    // End streat time = block.timestamp + 12 months
+    // 50% upfront payment, 50% in 12 months with a streaming payment of 1 second:
+    // Start stream time = block.timestamp + 12 months
+    // End streat time = block.timestamp + 12 months + 1 second
     // (splits payment equally between aUSDC and aUSDT):
 
 
     uint256 public constant FEE = 1296000 * 1e6; // $1,296,000. Minimum engagement fee as per proposal
     uint256 public constant UPFRONT_AMOUNT = FEE / 2;// $648.000 ; // 50% of the fee
+    uint256 public constant STREAM_AMOUNT = FEE / 2;// $648.000 ; // 50% of the fee
 
     uint256 public constant AUSDC_UPFRONT_AMOUNT = UPFRONT_AMOUNT / 2; // 324,000 aUSDC
     uint256 public constant AUSDT_UPFRONT_AMOUNT = UPFRONT_AMOUNT /2 ; // 324,000 aUSDT
 
-    uint256 public constant AUSDC_STREAM_AMOUNT = 324010368000; // ~324,000 aUSDC. A bit more for the streaming requirements
-    uint256 public constant AUSDT_STREAM_AMOUNT = 324010368000; // ~324,000 aUSDT. A bit more for the streaming requirements
+    uint256 public constant AUSDC_STREAM_AMOUNT = STREAM_AMOUNT / 2; // 324,000 aUSDC. No extra needed for streaming requirements since duration is exactly 1 second
+    uint256 public constant AUSDT_STREAM_AMOUNT = STREAM_AMOUNT / 2; // 324,000 aUSDT. No extra needed for streaming requirements since duration is exactly 1 second
 
-    uint256 public constant STREAMS_DURATION = 180 days; // 6 months of 30 days
-    uint256 public constant STREAMS_DELAY = 180 days; // 6 months of 30 days
+    uint256 public constant STREAMS_DURATION = 1 seconds; // Instant unlock 12 months from now
+    uint256 public constant STREAMS_DELAY = 365 days; // 12 months
 
     address public constant SIGP =
         address(0xC9a872868afA68BA937f65A1c5b4B252dAB15D85);
