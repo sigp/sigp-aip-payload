@@ -132,8 +132,12 @@ contract TestProposal is BaseTest {
 
         vm.warp(block.timestamp + 151 days);
 
-        assertGt(collectorProxy.balanceOf(100001, sigp), 0);
-        assertGt(collectorProxy.balanceOf(100002, sigp), 0);
+        assertEq(collectorProxy.balanceOf(100001, sigp), 0);
+        assertEq(collectorProxy.balanceOf(100002, sigp), 0);
+
+        assert(block.timestamp < startTime);
+
+        vm.warp(block.timestamp + 185 days);
 
         assert(block.timestamp > startTime);
 
@@ -147,21 +151,13 @@ contract TestProposal is BaseTest {
             collectorProxy.balanceOf(100002, sigp)
         );
 
-        assert(recipientAUsdcBalanceBefore < aUsdc.balanceOf(sigp));
-        assert(recipientAUsdtBalanceBefore < aUsdt.balanceOf(sigp));
+        uint256 streamAmount = uint256(PayloadAaveSigP(payload).STREAM_AMOUNT());
 
-        vm.warp(block.timestamp + 200 days);
+        assert(recipientAUsdcBalanceBefore + streamAmount / 2 < aUsdc.balanceOf(sigp));
+        assert(recipientAUsdtBalanceBefore + streamAmount / 2 < aUsdt.balanceOf(sigp));
+
+        // vm.warp(block.timestamp + 200 days);
         uint256 totalFee = uint256(PayloadAaveSigP(payload).FEE());
-
-        collectorProxy.withdrawFromStream(
-            100001,
-            collectorProxy.balanceOf(100001, sigp)
-        );
-
-        collectorProxy.withdrawFromStream(
-            100002,
-            collectorProxy.balanceOf(100002, sigp)
-        );
 
         assert(totalFee < aUsdc.balanceOf(sigp) + aUsdt.balanceOf(sigp));
 
