@@ -69,7 +69,7 @@ contract PayloadAaveSigP {
         // Creation of the streams
 
         // aUSDC stream
-        // 6 months stream, starting 6 months from now
+        // 1 second stream, starting 365 days from now
         CONTROLLER_OF_COLLECTOR.createStream(
             address(COLLECTOR_V2_PROXY),
             SIGP,
@@ -80,7 +80,7 @@ contract PayloadAaveSigP {
         );
 
         // aUSDT stream
-        // 6 months stream, starting 6 months from now
+        // 1 second stream, starting 365 days from now
         CONTROLLER_OF_COLLECTOR.createStream(
             address(COLLECTOR_V2_PROXY),
             SIGP,
